@@ -14,8 +14,11 @@ namespace LINQ_Matthew
         }
         public static List<string> ProblemTwo(List<string> listOfStringsWithDuplicates)
         {
-            return listOfStringsWithDuplicates.Distinct<string>().ToList();
+            return listOfStringsWithDuplicates.Distinct().ToList();
         }
-        //public static double ProblemThree(List<string> listOfStringGrades)
+        public static double ProblemThree(List<string> listOfStringGrades)
+        {
+            return listOfStringGrades.Average(g => g.Split(',').Select(int.Parse).OrderBy(a => a).Skip(1).Average());
+        }
     }
 }
