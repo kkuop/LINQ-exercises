@@ -12,5 +12,10 @@ namespace LINQ_Matthew
         {
             return listOfStrings.Where(s => s.Contains("th")).ToList();
         }
+        public static List<string> ProblemTwo(List<string> listOfStringsWithDuplicates)
+        {
+            return listOfStringsWithDuplicates.Distinct<string>().ToList();
+        }
+        //public static double ProblemThree(List<string> listOfStringGrades)
     }
 }

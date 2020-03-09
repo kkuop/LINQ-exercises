@@ -10,10 +10,16 @@ namespace LINQ_Matthew
     {
         static void Main(string[] args)
         {
-            List<string> myList = new List<string>() { "the", "bike", "this", "tenth", "mathematics" };
-            foreach (string word in Problems.ProblemOne(myList))
+            List<string> thList = new List<string>() { "the", "bike", "this", "tenth", "mathematics" };
+            foreach (string word in Problems.ProblemOne(thList))
             {
                 Console.WriteLine(word);
+            }
+            Console.ReadLine();
+            List<string> listWithDuplicate = new List<string>() { "Mike", "Brad", "Nevin", "Ian", "Mike" };
+            foreach (string name in Problems.ProblemTwo(listWithDuplicate))
+            {
+                Console.WriteLine(name);
             }
             Console.ReadLine();
         }
