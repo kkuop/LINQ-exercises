@@ -32,6 +32,13 @@ namespace LINQ
             problems.CalculateClassAvg(classGrades);
             Console.ReadKey();
             Console.Clear();
+            //*******************
+            // PROBLEM 4
+            //*******************
+            string lastName = "Kuopus";
+            problems.CountLettersInName(lastName);
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 }
