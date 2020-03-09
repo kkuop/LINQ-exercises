@@ -20,5 +20,17 @@ namespace LINQ_Matthew
         {
             return listOfStringGrades.Average(g => g.Split(',').Select(int.Parse).OrderBy(a => a).Skip(1).Average());
         }
+        public static string ProblemFour(string letters)
+        {
+            string result = "";
+            string[] charArray = letters.ToCharArray().Select(a => a.ToString().ToUpper()).OrderBy(a=>a).ToArray();
+            string myString =  charArray.Distinct().OrderBy(a=>a).Zip(charArray.GroupBy(a=>a).Select(a=>a.Count().ToString()), (a, b) => a+b).Aggregate((a, b) => result+= (a+b));
+            return result;
+            //Split letters into char array
+            //Sort alphabetically
+            //Count how many of each character there are
+            //Collapse so that each character appears once
+            //Intersprese counts
+        }
     }
 }
