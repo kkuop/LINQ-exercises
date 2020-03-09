@@ -10,6 +10,12 @@ namespace LINQ_Matthew
     {
         static void Main(string[] args)
         {
+            List<string> myList = new List<string>() { "the", "bike", "this", "tenth", "mathematics" };
+            foreach (string word in Problems.ProblemOne(myList))
+            {
+                Console.WriteLine(word);
+            }
+            Console.ReadLine();
         }
     }
 }
