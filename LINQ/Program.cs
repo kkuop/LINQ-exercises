@@ -13,14 +13,11 @@ namespace LINQ
             //*******************
             // PROBLEM 1
             //*******************
+            Problems problems = new Problems();
             List<string> words = new List<string>() {"the", "bike", "this", "it", "tenth", "mathematics" };
-            var newList = words.Where(m => m.Contains("th"));
-            foreach (string w in newList)
-            {
-                Console.WriteLine(w);
-            }
+            problems.PrintNewList(words);
             Console.ReadKey();
-
+            Console.Clear();
             //*******************
             // PROBLEM 2
             //*******************
