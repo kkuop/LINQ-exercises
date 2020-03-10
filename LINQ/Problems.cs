@@ -26,8 +26,16 @@ namespace LINQ
         }
         public void CalculateClassAvg(List<string> classGrades)
         {
-            double result = classGrades.Average(c => c.Split(',').Select(int.Parse).OrderBy(n => n).Skip(1).Average());
+            var result = classGrades.Average(c => c.Split(',').Select(int.Parse).OrderBy(n => n).Skip(1).Average());
             Console.WriteLine(result);
+        }
+        public void CountLettersInName(string name)
+        {
+            var zipper = name.ToList().OrderBy(n => n.ToString().ToUpper()).GroupBy(n => n.ToString().ToUpper()).Select(n => n.Key).Zip(name.ToList().OrderBy(n => n.ToString().ToUpper()).GroupBy(n=>n.ToString().ToUpper()).Select(n => n.Count()), (a, b) => (a.ToString() + b.ToString()));
+            foreach (var n in zipper)
+            {
+                Console.Write(n);
+            }
         }
     }
 }
