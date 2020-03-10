@@ -20,17 +20,18 @@ namespace LINQ_Matthew
         {
             return listOfStringGrades.Average(g => g.Split(',').Select(int.Parse).OrderBy(a => a).Skip(1).Average());
         }
-        public static string ProblemFour(string letters)
+        public static string ProblemFour(string stringInput)
         {
-            string result = "";
-            string[] charArray = letters.ToCharArray().Select(a => a.ToString().ToUpper()).OrderBy(a=>a).ToArray();
-            string myString =  charArray.Distinct().OrderBy(a=>a).Zip(charArray.GroupBy(a=>a).Select(a=>a.Count().ToString()), (a, b) => a+b).Aggregate((a, b) => result+= (a+b));
+            IEnumerable<IGrouping<string, char>> letters = stringInput.ToCharArray().OrderBy(a => a.ToString().ToUpper()).GroupBy(a => a.ToString().ToUpper());
+            IEnumerable<string> keys = letters.Select(a => a.Key.ToString().ToUpper());
+            IEnumerable<int> counts = letters.Select(a => a.Count());
+            string[] lettersWithCounts =  keys.Zip(counts, (a, b) => a.ToString() + b.ToString()).ToArray();
+            string result = lettersWithCounts.Aggregate((a, b) => a + b);
             return result;
-            //Split letters into char array
-            //Sort alphabetically
-            //Count how many of each character there are
-            //Collapse so that each character appears once
-            //Intersprese counts
+        }
+        public static string ProblemFourSingleLine(string letters)
+        {
+            return letters.ToCharArray().OrderBy(a => a.ToString().ToUpper()).GroupBy(a => a.ToString().ToUpper()).Select(a=>a.Key.ToString().ToUpper()).Zip(letters.ToCharArray().OrderBy(a=>a.ToString().ToUpper()).GroupBy(a => a.ToString().ToUpper()).Select(a => a.Count()), (a, b) => a.ToString() + b.ToString()).ToArray().Aggregate((a,b)=>a+b);
         }
     }
 }
