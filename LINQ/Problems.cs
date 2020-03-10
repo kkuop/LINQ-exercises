@@ -31,7 +31,7 @@ namespace LINQ
         }
         public void CountLettersInName(string name)
         {
-            var zipper = name.ToList().OrderBy(n => n).GroupBy(n => n).Select(n => n.Count()).Zip(name.ToList().OrderBy(n => n).Select(n => n.ToString().ToUpper()), (a, b) => (a.ToString() + b.ToString()));
+            var zipper = name.ToList().OrderBy(n => n.ToString().ToUpper()).GroupBy(n => n.ToString().ToUpper()).Select(n => n.Key).Zip(name.ToList().OrderBy(n => n.ToString().ToUpper()).GroupBy(n=>n.ToString().ToUpper()).Select(n => n.Count()), (a, b) => (a.ToString() + b.ToString()));
             foreach (var n in zipper)
             {
                 Console.Write(n);
